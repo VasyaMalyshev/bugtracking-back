@@ -1,0 +1,209 @@
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="1.2.0" author="vasiliy.malyshev">
+        <insert tableName="field_type">
+            <column name="id" value="1"/>
+            <column name="name" value="Status"/>
+            <column name="type" value="TEXT"/>
+            <column name="only_default" value="true"/>
+        </insert>
+
+        <insert tableName="field_type">
+            <column name="id" value="2"/>
+            <column name="name" value="Type"/>
+            <column name="type" value="TEXT"/>
+            <column name="only_default" value="true"/>
+        </insert>
+
+        <insert tableName="field_type">
+            <column name="id" value="3"/>
+            <column name="name" value="Priority"/>
+            <column name="type" value="TEXT"/>
+            <column name="only_default" value="true"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="1.2.1" author="vasiliy.malyshev">
+        <insert tableName="issue">
+            <column name="id" value="1"/>
+            <column name="title" value="Добавить отображение правил"/>
+            <column name="description" value="Добавить в проект отображение правил"/>
+        </insert>
+        <!--<insert tableName="issue">
+            <column name="id" value="2"/>
+            <column name="title" value="Протестировать отображение"/>
+            <column name="description" value="Протестировать отображение"/>
+        </insert>-->
+    </changeSet>
+
+    <changeSet id="1.2.2" author="vasiliy.malyshev">
+        <insert tableName="issue_field">
+            <column name="id" value="1"/>
+            <column name="text" value="To Do"/>
+            <column name="is_default" value="true"/>
+            <column name="issue_field_type" value="1"/>
+        </insert>
+        <insert tableName="issue_field">
+            <column name="id" value="2"/>
+            <column name="text" value="In Progress"/>
+            <column name="is_default" value="true"/>
+            <column name="issue_field_type" value="1"/>
+        </insert>
+        <insert tableName="issue_field">
+            <column name="id" value="3"/>
+            <column name="text" value="Done"/>
+            <column name="is_default" value="true"/>
+            <column name="issue_field_type" value="1"/>
+        </insert>
+
+        <insert tableName="issue_field">
+            <column name="id" value="4"/>
+            <column name="text" value="Story"/>
+            <column name="is_default" value="true"/>
+            <column name="issue_field_type" value="2"/>
+        </insert>
+        <insert tableName="issue_field">
+            <column name="id" value="5"/>
+            <column name="text" value="Bug"/>
+            <column name="is_default" value="true"/>
+            <column name="issue_field_type" value="2"/>
+        </insert>
+        <insert tableName="issue_field">
+            <column name="id" value="6"/>
+            <column name="text" value="Task"/>
+            <column name="is_default" value="true"/>
+            <column name="issue_field_type" value="2"/>
+        </insert>
+        <insert tableName="issue_field">
+            <column name="id" value="7"/>
+            <column name="text" value="Minor"/>
+            <column name="is_default" value="true"/>
+            <column name="issue_field_type" value="3"/>
+        </insert>
+        <insert tableName="issue_field">
+            <column name="id" value="8"/>
+            <column name="text" value="Major"/>
+            <column name="is_default" value="true"/>
+            <column name="issue_field_type" value="3"/>
+        </insert>
+        <insert tableName="issue_field">
+            <column name="id" value="9"/>
+            <column name="text" value="Blocker"/>
+            <column name="is_default" value="true"/>
+            <column name="issue_field_type" value="3"/>
+        </insert>
+    </changeSet>
+
+
+   <!-- <changeSet id="1.2.3" author="vasiliy.malyshev">
+        <insert tableName="RULE">
+            <column name="id" value="1"/>
+            <column name="title" value="Запрещено связывать Story и Bug связью IS PART OF, если Story имеет статус Done"/>
+            <column name="error_text" value="Невозможно связать Story и Bug"/>
+            <column name="is_active" value="true"/>
+            <column name="relation_type" value="CLONED_BY"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="1.2.4" author="vasiliy.malyshev">
+        <insert tableName="RULE">
+            <column name="id" value="2"/>
+            <column name="title" value="Запрещено связывать Story и Task связью CLONED BY, если приоритет Task отличный от Major, а статус Story = To Do"/>
+            <column name="error_text" value="Нельзя связывать Story и Task связью CLONED BY"/>
+            <column name="is_active" value="true"/>
+            <column name="relation_type" value="CLONED_BY"/>
+        </insert>
+    </changeSet>-->
+    
+    <!--<changeSet id="1.2.5" author="vasiliy.malyshev">
+        <insert tableName="issue_relation">
+            <column name="id" value="1"/>
+            <column name="relation_type" value="CLONED_BY"/>
+            <column name="issue_relationship" value="1"/>
+        </insert>
+    </changeSet>
+    
+    <changeSet id="1.2.6" author="vasiliy.malyshev">
+        <insert tableName="issue_relation_issue_list">
+            <column name="issue_list_id" value="2"/>
+            <column name="issue_relation_id" value="1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="1.2.7" author="vasiliy.malyshev">
+        <insert tableName="rule_field">
+            <column name="id" value="1"/>
+            <column name="is_default" value="false"/>
+            <column name="text" value="In Progress"/>
+            <column name="rule_field_type" value="1"/>
+        </insert>
+        <insert tableName="rule_field">
+            <column name="id" value="2"/>
+            <column name="is_default" value="false"/>
+            <column name="text" value="Bug"/>
+            <column name="rule_field_type" value="2"/>
+        </insert>
+        <insert tableName="rule_field">
+            <column name="id" value="3"/>
+            <column name="is_default" value="false"/>
+            <column name="text" value="Major"/>
+            <column name="rule_field_type" value="3"/>
+        </insert>
+        <insert tableName="rule_field">
+            <column name="id" value="4"/>
+            <column name="is_default" value="false"/>
+            <column name="text" value="Done"/>
+            <column name="rule_field_type" value="1"/>
+        </insert>
+        <insert tableName="rule_field">
+            <column name="id" value="5"/>
+            <column name="is_default" value="false"/>
+            <column name="text" value="Bug"/>
+            <column name="rule_field_type" value="2"/>
+        </insert>
+        <insert tableName="rule_field">
+            <column name="id" value="6"/>
+            <column name="is_default" value="false"/>
+            <column name="text" value="Blocker"/>
+            <column name="rule_field_type" value="3"/>
+        </insert>
+        <insert tableName="rule_field">
+            <column name="id" value="7"/>
+            <column name="is_default" value="false"/>
+            <column name="text" value="Story"/>
+            <column name="rule_field_type" value="2"/>
+        </insert>
+    </changeSet>
+    <changeSet id="1.2.8" author="vasiliy.malyshev">
+        <insert tableName="rule_from">
+            <column name="rule_id" value="1"/>
+            <column name="from_id" value="1"/>
+        </insert>
+        <insert tableName="rule_from">
+            <column name="rule_id" value="1"/>
+            <column name="from_id" value="2"/>
+        </insert>
+        <insert tableName="rule_from">
+            <column name="rule_id" value="1"/>
+            <column name="from_id" value="3"/>
+        </insert>
+    </changeSet>
+    <changeSet id="1.2.9" author="vasiliy.malyshev">
+        <insert tableName="rule_to">
+            <column name="rule_id" value="1"/>
+            <column name="to_id" value="1"/>
+        </insert>
+        <insert tableName="rule_to">
+            <column name="rule_id" value="1"/>
+            <column name="to_id" value="2"/>
+        </insert>
+        <insert tableName="rule_to">
+            <column name="rule_id" value="1"/>
+            <column name="to_id" value="3"/>
+        </insert>
+    </changeSet>-->
+</databaseChangeLog>
